@@ -3,9 +3,14 @@ package com.learnjava.frenemy.controller;
 import com.learnjava.frenemy.model.UserDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class AppController {
@@ -50,7 +55,16 @@ public class AppController {
     // DTO APPROACH
     // USING @ModelAttribute APPROACH
     @RequestMapping("/processHomepage")
-    public String showResultPage(@ModelAttribute("userDTO") UserDTO user) {
+    public String showResultPage(@Valid @ModelAttribute("userDTO") UserDTO user,
+                                 BindingResult result) {
+
+        if (result.hasErrors()) {
+            /* List<ObjectError> allErrors = result.getAllErrors();
+            for (ObjectError objErr : allErrors) {
+                System.out.println(objErr);
+            } */
+            return "home-page";
+        }
         return "result-page";
     }
 }

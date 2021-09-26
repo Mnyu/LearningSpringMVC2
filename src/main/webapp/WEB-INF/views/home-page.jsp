@@ -3,6 +3,14 @@
 <html>
 <head>
     <title>Homepage</title>
+    <style type="text/css">
+        .error {
+            color: red;
+            position: fixed;
+            text-align: left;
+            margin-left: 30px;
+        }
+    </style>
 </head>
 <body>
     <h1 align="center">Frenemy Calculator</h1>
@@ -27,13 +35,21 @@
         <div align="center">
             <p>
                 <label for="yn">Your Name : </label>
-                <form:input type="text" id="yn" path="userName"/>
+                <form:input id="yn" path="userName"/>
+                <form:errors path="userName" cssClass="error"/>
             </p>
             <p>
                 <label for="fn">Friend's Name : </label>
-                <form:input type="text" id="fn" path="friendName"/>
+                <form:input id="fn" path="friendName"/>
+                <form:errors path="friendName" cssClass="error"/>
             </p>
-            <input type="submit" value="calculate">
+            <p>
+                <form:checkbox path="termsAndConditionsAccepted" id="check"/>
+                <label>I am agreeing that this is for fun!</label>
+                <form:errors path="termsAndConditionsAccepted" cssClass="error"/>
+            </p>
+
+            <input type="submit" value="Calculate">
         </div>
     </form:form>
 </body>
