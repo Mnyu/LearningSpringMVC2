@@ -16,6 +16,6 @@ public class FrenemyApplicationInitializer extends AbstractAnnotationConfigDispa
 
     @Override
     protected String[] getServletMappings() {
-        return new String[]{"/mywebsite.com/*"};
+        return new String[]{"/"};
     }
 }
