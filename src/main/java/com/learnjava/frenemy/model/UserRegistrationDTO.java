@@ -4,9 +4,13 @@ import com.learnjava.frenemy.annotations.CustomAge;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotEmpty;
+
 @Data
 @NoArgsConstructor
 public class UserRegistrationDTO {
+
+    @NotEmpty(message = "* can not be empty")
     private String name;
     private String userName;
     private char[] password;

@@ -1,8 +1,12 @@
 package com.learnjava.frenemy.controller;
 
 import com.learnjava.frenemy.model.UserRegistrationDTO;
+import com.learnjava.frenemy.propertyeditor.CustomNamePropertyEditor;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -26,6 +30,28 @@ public class RegistrationController {
             return "register";
         }
         return "register-success";
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder webDataBinder) {
+        // THIS METHOD IS CALLED BEFORE EACH ENDPOINT METHOD OF THIS CONTROLLER
+        System.out.println("********** INIT METHOD OF REGISTRATION CONTROLLER CALLED **********");
+
+        // USE OF INIT BINDER - CAN BE USED FOR SOME PRE-PROCESSING BEFORE DATA BINDING
+        // webDataBinder.setDisallowedFields("name");
+
+        // USING IN-BUILT PROPERTY EDITOR
+        StringTrimmerEditor editor = new StringTrimmerEditor(true);
+        webDataBinder.registerCustomEditor(String.class, "name", editor);
+
+        // THINGS THAT CAN BE USED AND REGISTERED USING WEB DATA BINDER :
+        // CUSTOM EDITORS, VALIDATORS, REQUIRED PROPERTIES,
+        // ALLOWED/DISALLOWED PROPERTIES
+
+        // CUSTOM NAME PROPERTY EDITOR
+        CustomNamePropertyEditor customNamePropertyEditor = new CustomNamePropertyEditor();
+        webDataBinder.registerCustomEditor(String.class, "name", customNamePropertyEditor);
+
     }
 
 }

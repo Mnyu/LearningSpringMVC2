@@ -22,6 +22,7 @@
             <p>
                 <label>Name : </label>
                 <form:input path="name"/>
+                <form:errors path="name" cssClass="error"/>
             </p>
             <p>
                 <label>Username : </label>
