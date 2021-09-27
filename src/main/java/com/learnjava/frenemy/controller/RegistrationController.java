@@ -2,6 +2,8 @@ package com.learnjava.frenemy.controller;
 
 import com.learnjava.frenemy.model.UserRegistrationDTO;
 import com.learnjava.frenemy.propertyeditor.CustomNamePropertyEditor;
+import com.learnjava.frenemy.validator.EmailValidator;
+import com.learnjava.frenemy.validator.UserNameValidator;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -52,6 +54,9 @@ public class RegistrationController {
         CustomNamePropertyEditor customNamePropertyEditor = new CustomNamePropertyEditor();
         webDataBinder.registerCustomEditor(String.class, "name", customNamePropertyEditor);
 
+        // CUSTOM USER NAME VALIDATOR
+        webDataBinder.addValidators(new UserNameValidator());
+        // CUSTOM EMAIL VALIDATOR
+        webDataBinder.addValidators(new EmailValidator());
     }
-
 }
