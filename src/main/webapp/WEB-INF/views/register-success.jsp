@@ -19,6 +19,7 @@
         </c:forEach>
     <br/>
     Gender : ${userRegDTO.gender}<br/>
+    Age : ${userRegDTO.age}<br/>
     Email  : ${userRegDTO.communicationDTO.email}<br/>
     Phone  : ${userRegDTO.communicationDTO.phone}<br/>
 </body>

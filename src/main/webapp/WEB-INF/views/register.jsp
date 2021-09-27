@@ -3,6 +3,14 @@
 <html>
 <head>
     <title>User Registration</title>
+    <style type="text/css">
+        .error {
+            color: red;
+            position: fixed;
+            text-align: left;
+            margin-left: 30px;
+        }
+    </style>
 </head>
 <body>
     <h1 align="center">Frenemy Calculator</h1>
@@ -43,6 +51,11 @@
                 <label>Gender : </label>
                 Male <form:radiobutton path="gender" value="male"/>
                 Female <form:radiobutton path="gender" value="female"/>
+            </p>
+            <p>
+                <label>Age : </label>
+                <form:input path="age"/>
+                <form:errors path="age" cssClass="error"/>
             </p>
         </div>
         <div align="center">
