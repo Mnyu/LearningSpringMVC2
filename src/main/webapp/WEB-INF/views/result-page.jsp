@@ -6,7 +6,10 @@
 <body>
     <h1 align="center">Frenemy Calculator</h1>
     <hr/>
-    <p>UserName is  : ${userDTO.userName}</p>
-    <p>FriendName is  : ${userDTO.friendName}</p>
+    <h2>The Frenemy Calculator predicts : </h2>
+    <p>${userDTO.userName} and ${userDTO.friendName} are </p>
+    <p>FRIEND</p>
+    <br/><br/><br/>
+    <a href="/LearningSpringMVC2_war/send-email">Send Result to your mail</a>
 </body>
 </html>

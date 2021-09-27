@@ -59,12 +59,10 @@ public class AppController {
                                  BindingResult result) {
 
         if (result.hasErrors()) {
-            /* List<ObjectError> allErrors = result.getAllErrors();
-            for (ObjectError objErr : allErrors) {
-                System.out.println(objErr);
-            } */
+            result.getAllErrors().forEach(System.out::println);
             return "home-page";
         }
+
         return "result-page";
     }
 }
