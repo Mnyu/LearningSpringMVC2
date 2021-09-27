@@ -12,4 +12,5 @@ public class UserRegistrationDTO {
     private String country;
     private String[] hobbies;
     private String gender;
+    private CommunicationDTO communicationDTO;
 }
