@@ -10,7 +10,7 @@ import javax.validation.constraints.NotEmpty;
 @NoArgsConstructor
 public class UserRegistrationDTO {
 
-    @NotEmpty(message = "* can not be empty")
+    @NotEmpty(message = "{string.notEmpty}")
     private String name;
     private String userName;
     private char[] password;
