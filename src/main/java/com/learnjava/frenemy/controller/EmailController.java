@@ -23,7 +23,7 @@ public class EmailController {
     @RequestMapping("/process-email")
     public String processEmail(@SessionAttribute("userDTO") UserDTO userDTO,
                                @ModelAttribute("emailDTO") EmailDTO emailDTO) {
-        emailService.sendEmail(userDTO.getUserName(), emailDTO.getUserEmail(), "FRIEND");
+        emailService.sendEmail(userDTO.getUserName(), emailDTO.getUserEmail(), userDTO.getRelation());
         return "process-email";
     }
 

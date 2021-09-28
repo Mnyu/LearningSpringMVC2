@@ -20,6 +20,8 @@ public class UserDTO {
     @AssertTrue(message = "* You have to agree to terms and conditions.")
     private boolean termsAndConditionsAccepted;
 
+    private String relation;
+
     public UserDTO() {
         System.out.println("*******************");
         System.out.println("UserDTO constructor called...");

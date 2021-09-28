@@ -1,6 +1,8 @@
 package com.learnjava.frenemy.controller;
 
 import com.learnjava.frenemy.model.UserDTO;
+import com.learnjava.frenemy.service.FrenemyCalcService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +15,9 @@ import javax.validation.Valid;
 @Controller
 @SessionAttributes({"userDTO"})
 public class AppController {
+
+    @Autowired
+    private FrenemyCalcService frenemyCalcService;
 
     // WITHOUT USING @ModelAttribute APPROACH
     @RequestMapping("/")
@@ -53,11 +58,13 @@ public class AppController {
     @RequestMapping("/processHomepage")
     public String showResultPage(@Valid @ModelAttribute("userDTO") UserDTO user,
                                  BindingResult result) {
-
         if (result.hasErrors()) {
             result.getAllErrors().forEach(System.out::println);
             return "home-page";
         }
+
+        String relation = frenemyCalcService.findRelation(user.getUserName(), user.getFriendName());
+        user.setRelation(relation);
 
         return "result-page";
     }

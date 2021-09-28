@@ -8,7 +8,7 @@
     <hr/>
     <h2>The Frenemy Calculator predicts : </h2>
     <p>${userDTO.userName} and ${userDTO.friendName} are </p>
-    <p>FRIEND</p>
+    <p>${userDTO.relation}</p>
     <br/><br/><br/>
     <a href="/LearningSpringMVC2_war/send-email">Send Result to your mail</a>
 </body>
