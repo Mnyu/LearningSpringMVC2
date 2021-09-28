@@ -4,32 +4,28 @@ import com.learnjava.frenemy.model.UserDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
+@SessionAttributes({"userDTO"})
 public class AppController {
 
-      // WITHOUT USING @ModelAttribute APPROACH
-//    @RequestMapping("/")
-//    public String getHomePage(Model model) {
-//
-//        UserDTO userDTO = new UserDTO();
-//        model.addAttribute("userDTO", userDTO);
-//
-//        return "home-page";
-//    }
-
-    // USING @ModelAttribute APPROACH
+    // WITHOUT USING @ModelAttribute APPROACH
     @RequestMapping("/")
-    public String getHomePage(@ModelAttribute("userDTO") UserDTO user) {
+    public String getHomePage(Model model) {
+        model.addAttribute("userDTO", new UserDTO());
         return "home-page";
     }
+
+    // USING @ModelAttribute APPROACH
+//    @RequestMapping("/")
+//    public String getHomePage(@ModelAttribute("userDTO") UserDTO user) {
+//        return "home-page";
+//    }
 
 
       // REQUEST PARAM APPROACH

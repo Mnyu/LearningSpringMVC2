@@ -6,9 +6,9 @@
 <body>
     <h1 align="center">Frenemy Calculator</h1>
     <hr/>
-    <h2 align="center">Hi USER</h2>
+    <h2 align="center">Hi ${userDTO.userName}!</h2>
     <div align="center">
-        <p><label>Email successfully sent to ${emailDTO.userEmail}</label></p>
+        <p><label>Email successfully sent to ${emailDTO.userEmail}!!!</label></p>
     </div>
 </body>
 </html>
