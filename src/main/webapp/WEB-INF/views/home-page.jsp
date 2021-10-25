@@ -15,6 +15,11 @@
 <body>
     <h1 align="center">Frenemy Calculator</h1>
     <hr/>
+    <div align="center">
+        <form:form action="logout" method="POST">
+            <input type="submit" value="Logout">
+        </form:form>
+    </div>
 <%--    <form action="processHomepage" method="get">--%>
 <%--        <div align="center">--%>
 <%--            <p>--%>

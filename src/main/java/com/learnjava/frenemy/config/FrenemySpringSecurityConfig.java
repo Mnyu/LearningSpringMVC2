@@ -3,6 +3,7 @@ package com.learnjava.frenemy.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -25,5 +26,33 @@ public class FrenemySpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+
+        // DEFAULT
+//        http.authorizeRequests()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .and()
+//                .httpBasic()
+//        ;
+
+        // CUSTOMIZED
+        http.authorizeRequests()
+                .antMatchers("/test", "/custom-login", "/process-login").permitAll()
+                .antMatchers("/*").authenticated()
+                .and()
+                .formLogin().loginPage("/custom-login").loginProcessingUrl("/process-login")
+                .and()
+                .httpBasic()
+                .and()
+                .logout()
+                // when custom-login given then this logout also has to be given.
+                ;
+        // Spring automatically handles the process-login url data submission, no need to write a controller handler method
+        // for /procees-login
     }
 }
