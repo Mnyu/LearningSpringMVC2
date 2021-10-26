@@ -9,12 +9,14 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.core.env.Environment;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import javax.sql.DataSource;
 import java.util.Properties;
 
 @EnableWebMvc
@@ -83,4 +85,13 @@ public class FrenemyAppConfig implements WebMvcConfigurer {
         //TODO : TURN ON GMAIL LESS SECURE APP IN THE GOOGLE ACCOUNT
     }
 
+    @Bean
+    public DataSource getDataSource() {
+        DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
+        driverManagerDataSource.setUsername("postgres");
+        driverManagerDataSource.setPassword("test123");
+        driverManagerDataSource.setUrl("jdbc:postgresql://localhost:5433/studentdb?useSSL=false");
+        driverManagerDataSource.setDriverClassName("org.postgresql.Driver");
+        return driverManagerDataSource;
+    }
 }
