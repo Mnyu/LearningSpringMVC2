@@ -54,6 +54,8 @@ public class FrenemySpringSecurityConfig extends WebSecurityConfigurerAdapter {
         // CUSTOMIZED
         http.authorizeRequests()
                 .antMatchers("/test", "/custom-login", "/process-login", "/signup", "/process-signup").permitAll()
+                .antMatchers("/user").hasAuthority("USER")
+                .antMatchers("/admin").hasAuthority("ADMIN")
                 .antMatchers("/*").authenticated()
                 .and()
                 .formLogin().loginPage("/custom-login").loginProcessingUrl("/process-login")
@@ -62,6 +64,8 @@ public class FrenemySpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 // when custom-login given then this logout also has to be given.
+                .and()
+                .exceptionHandling().accessDeniedPage("/access-denied")
                 ;
         // Spring automatically handles the process-login url data submission, no need to write a controller handler method
         // for /procees-login
