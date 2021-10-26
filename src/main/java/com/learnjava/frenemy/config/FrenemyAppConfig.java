@@ -9,6 +9,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.core.env.Environment;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -93,5 +94,10 @@ public class FrenemyAppConfig implements WebMvcConfigurer {
         driverManagerDataSource.setUrl("jdbc:postgresql://localhost:5433/studentdb?useSSL=false");
         driverManagerDataSource.setDriverClassName("org.postgresql.Driver");
         return driverManagerDataSource;
+    }
+
+    @Bean
+    public JdbcTemplate getJdbcTemplate() {
+        return new JdbcTemplate(getDataSource());
     }
 }

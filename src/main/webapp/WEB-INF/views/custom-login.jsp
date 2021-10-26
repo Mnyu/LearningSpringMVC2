@@ -18,5 +18,8 @@
         Password : <input type="password" name="password"><br/><br/>
         <input type="submit" value="Login">
     </form:form>
+    <form:form action="signup" method="GET">
+        <input type="submit" value="Register">
+    </form:form>
 </body>
 </html>

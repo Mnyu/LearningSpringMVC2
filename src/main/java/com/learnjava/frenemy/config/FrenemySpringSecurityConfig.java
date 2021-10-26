@@ -53,7 +53,7 @@ public class FrenemySpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // CUSTOMIZED
         http.authorizeRequests()
-                .antMatchers("/test", "/custom-login", "/process-login").permitAll()
+                .antMatchers("/test", "/custom-login", "/process-login", "/signup", "/process-signup").permitAll()
                 .antMatchers("/*").authenticated()
                 .and()
                 .formLogin().loginPage("/custom-login").loginProcessingUrl("/process-login")
